@@ -14,8 +14,6 @@ class Camera(object):
         pass
 
     def capture(self):
-        # TODO: 'secuencia de captura de la foto y guardado, primero se
-        #  ilumina el mabiente y luego se procede con la foto'
+        # TODO: 'secuencia de captura de la foto y guardado'
 
-        self.flash_enviroment()
         pass
