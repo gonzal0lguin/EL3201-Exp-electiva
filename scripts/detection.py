@@ -1,16 +1,23 @@
 import numpy as np
 import cv2
 
-image = cv2.imread('firma2.png')
+image = cv2.imread('/Users/gonzalolguin/Desktop/image7.jpg')
 result = image.copy()
+kernel = np.ones((12,12),np.float32)/144
+dst = cv2.filter2D(image,-1,kernel)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-lower_blue = np.array([20, 20, 100])
-upper_blue = np.array([255,255,255])
+lower_blue = np.array([50, 50, 50])
+upper_blue = np.array([120,120,120])
 
 lower_black = np.array([0, 0, 0])
-upper_black = np.array([20, 50, 50])
+upper_black = np.array([40, 40, 40])
 
+g = image.copy()
+# set blue and red channels to 0
+g[:, :, 0] = 0
+g[:, :, 2] = 0
 
+#a = cv2.cvtColor(g, cv2.COLOR_BGR2HSV)
 mask = cv2.inRange(image, lower_blue, upper_blue)
 
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
@@ -36,13 +43,17 @@ try:
     ROI = result[top:bottom, left:right].copy()
     cv2.rectangle(result, (left, top), (right, bottom), (36, 255, 12), 2)
 
+
     cv2.imshow('result', result)
     cv2.imshow('ROI', ROI)
     cv2.imshow('close', close)
-    # cv2.imwrite('result.png', result)
-    # cv2.imwrite('ROI.png', ROI)
+    #cv2.imwrite('result.png', result)
+    #cv2.imwrite('ROI.png', ROI)
     cv2.waitKey()
 
 except:
     print('Not enough contours found')
+
+cv2.destroyAllWindows()
+
 

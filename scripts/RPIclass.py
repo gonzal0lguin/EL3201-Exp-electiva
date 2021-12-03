@@ -28,6 +28,9 @@ class Camera(object):
         for i in range(len(self.pins)):
             io.output(self.pins[i], mode)
 
-    def capture(self):
-        # TODO: 'secuencia de captura de la foto y guardado'
-        pass
+    def capture(self, name):
+        self.cam.rotation = 180
+        sleep(1)
+        self.path = 'home/pi/Desktop/EL3201-Exp-electiva/scripts/{}.jpg'.format(name)
+        self.cam.capture(self.path)
+

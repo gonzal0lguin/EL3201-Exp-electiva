@@ -121,7 +121,7 @@ class Detector(object):
 
 if __name__ == "__main__":
     yay = Detector()
-    yay.get_mask_bounds('chionpaper.jpg')
-    #print(yay.lower, yay.upper)
+    yay.get_mask_bounds('/Users/gonzalolguin/Desktop/image9.jpg')
+    print(yay.lower, yay.upper)
     yay.get_only_curve()
     #yay.get_final_countours()

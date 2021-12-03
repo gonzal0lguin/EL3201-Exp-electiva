@@ -1,4 +1,4 @@
-from scripts.RPIclass import Camera
+from RPIclass import Camera
 
 picam = Camera()
 
@@ -19,4 +19,4 @@ if __name__ == "__main__":
     path = picam.path
     print('Perfecto! la imagen está guardada, revisa el archivo --archivo--')
     print('En una terminal nativa copia el siguiente comando:')
-    print('scp /home/pi/EL3201-Exp-electiva/scripts/photos/{} path/to/location/{}'.format(path))
+    print('scp /home/pi/EL3201-Exp-electiva/scripts/photos/{} path/to/location/{}'.format(path, path))
