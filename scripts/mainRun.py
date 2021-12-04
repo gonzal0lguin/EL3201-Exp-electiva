@@ -8,17 +8,17 @@ if __name__ == "__main__":
     det = Detector(path)
     det.add_img()
     det.extract_contours()
+    option0 = input('¿Ver las imagenes? [y/n] ')
+    if option0 == 'y':
+        det.show_imgs()
 
-    option = input('¿desea guardar las curvas extraídas? [y/n]')
+    option = input('¿Guardar las curvas extraídas? [y/n]')
     if option == 'y':
         path_out = input('Ingerese path completo para guardar la foto\n')
         det.save_img(path_out)
         print('Foto guardada exitosamente!')
-        option2 = input('¿Desea visalizarla? [y/n] ')
 
+        option2 = input('¿Desea visalizar el path? [y/n] ')
         if option2 == 'y':
             lines = linedraw.sketch(path_out)
             linedraw.visualize(lines)
-
-#/Users/gonzalolguin/Desktop/teste.jpg
-#/Users/gonzalolguin/Desktop/firma2.png
