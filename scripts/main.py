@@ -1,4 +1,5 @@
 from RPIclass import Camera
+import RPi.GPIO as io
 
 picam = Camera()
 
@@ -6,17 +7,13 @@ picam = Camera()
 if __name__ == "__main__":
     picam.cool_waiting_flash()
     picam.flash_enviroment(io.HIGH)
-    print('Hola! Porfavor, acerca tu imagen a la zona iluminada por la camara')
-    input('Presiona "enter" para tomar la foto')
+    print('Hola! Porfavor, acerca tu imagen a la zona iluminada por la camara\n')
+    name = input('Escribe el nombre del archivo final y presiona "enter" para tomar la foto\n')
 
-    picam.capture()
-    #Todo: 'aca la secuancia de toma de la foto, una vez que se obtiene se debe
-    # mostrar un preview y preguntar si está bien, si no dar opciones para
-    # corregir lo que esté mal'
+    picam.capture(name)
+    picam.flash_enviroment(io.LOW)
 
-
-    #### luego de que tod o este bien se uarda la imagen y se dice:
     path = picam.path
-    print('Perfecto! la imagen está guardada, revisa el archivo --archivo--')
+    print('Perfecto! la imagen esta guardada, revisa el archivo')
     print('En una terminal nativa copia el siguiente comando:')
-    print('scp /home/pi/EL3201-Exp-electiva/scripts/photos/{} path/to/location/{}'.format(path, path))
+    print('scp pi@gonz-zerow.local:{} path/to/location/image.jpg'.format(path))
